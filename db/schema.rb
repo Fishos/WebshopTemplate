@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180312161382) do
+ActiveRecord::Schema.define(version: 20180315020751) do
 
   create_table "friendly_id_slugs", force: :cascade do |t|
     t.string "slug", null: false
@@ -963,6 +963,7 @@ ActiveRecord::Schema.define(version: 20180312161382) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string "cart_tax_country_iso"
+    t.text "preferences"
     t.index ["code"], name: "index_spree_stores_on_code"
     t.index ["default"], name: "index_spree_stores_on_default"
   end

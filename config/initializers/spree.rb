@@ -18,7 +18,12 @@ Spree.config do |config|
   # any inventory changes.
   # config.inventory_cache_threshold = 3
 
+config.default_country_iso = "BE"
 
+config.address_requires_state = false
+config.checkout_zone = "Belgium"
+
+config.currency = "EUR"
   # Frontend:
 
   # Custom logo for the frontend

@@ -32,6 +32,8 @@ gem 'jbuilder', '~> 2.5'
 gem 'deface'
 gem 'solidus'
 gem 'solidus_auth_devise'
+gem 'solidus_german_market', github: 'hefan/solidus_german_market'
+gem 'solidus_i18n', github: 'solidusio-contrib/solidus_i18n', branch: 'master'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
