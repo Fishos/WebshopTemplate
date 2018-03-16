@@ -41,14 +41,14 @@ config.currency = "EUR"
   # Gateway credentials can be configured statically here and referenced from
   # the admin. They can also be fully configured from the admin.
   #
-  # config.static_model_preferences.add(
-  #   Spree::Gateway::StripeGateway,
-  #   'stripe_env_credentials',
-  #   secret_key: ENV['STRIPE_SECRET_KEY'],
-  #   publishable_key: ENV['STRIPE_PUBLISHABLE_KEY'],
-  #   server: Rails.env.production? ? 'production' : 'test',
-  #   test_mode: !Rails.env.production?
-  # )
+  config.static_model_preferences.add(
+    Spree::Gateway::StripeGateway,
+    'stripe_env_credentials',
+    secret_key: ENV['sk_test_NjhajICOuSF7hZssgI27CbDO'],
+    publishable_key: ENV['pk_test_cn4N8RGtF8sgMJqfk5naWjOh'],
+    server: Rails.env.production? ? 'production' : 'test',
+    test_mode: !Rails.env.production?
+  )
 end
 
 Spree::Frontend::Config.configure do |config|

@@ -1,0 +1,30 @@
+<% filters = @taxon ? @taxon.applicable_filters : Spree::Core::SearchkickFilters.all_filters %>
+<% unless filters.empty? %>
+  <%= form_tag '', :method => :get, :id => 'sidebar_products_filters' do %>
+    <%= hidden_field_tag 'per_page', params[:per_page] %>
+    <%= hidden_field_tag 'keywords', params[:keywords] if params[:keywords] && !params[:keywords].blank? %>
+    <%= hidden_field_tag 'taxon', params[:taxon] if params[:taxon] && !params[:taxon].blank? %>
+    <%= raw(hash_as_hidden_fields({searchkick_options: params[:searchkick_options] })) if params[:searchkick_options] && !params[:searchkick_options].blank?  %>
+    <% filters.each do |filter| %>
+      <% labels = filter[:labels] || filter[:conds].map {|m,c| [m,m]} %>
+      <% next if labels.empty? %>
+      <div class="navigation" data-hook="navigation">
+        <h6 class="filter-title"> <%= filter[:name] %> </h6>
+        <ul class="filter_choices">
+          <% labels.each do |nm,val| %>
+            <% label = "#{filter[:name]}_#{nm}".gsub(/\s+/,'_') %>
+            <li class="nowrap">
+              <input type="checkbox"
+                     id="<%= label %>"
+                     name="filter[<%= filter[:scope].to_s %>][]"
+                     value="<%= val %>"
+                     <%= params[:filter] && params[:filter][filter[:scope]] && params[:filter][filter[:scope]].include?(val.to_s) ? "checked" : "" %> />
+              <label class="nowrap" for="<%= label %>"> <%= nm %> </label>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <%= submit_tag Spree.t(:search), :name => nil %>
+  <% end %>
+<% end %>
